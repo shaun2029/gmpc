@@ -55,9 +55,11 @@ public class  Gmpc.Tools.AutoResetPriority : Gmpc.Plugin.Base
         {
             weak MPD.Song? song =  server.playlist_get_current_song();
             if(song != null) {
+/*
                 if(song.priority > 0 ) {
                     MPD.PlayQueue.set_priority(server, song.id, 0);  
                 }
+*/
             }
         }
     }

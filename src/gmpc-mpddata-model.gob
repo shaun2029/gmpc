@@ -192,7 +192,7 @@ requires 2.0.0
             if(data->type == MPD_DATA_TYPE_SONG && data->song != NULL) {
                 GtkTreePath *path = gtk_tree_path_new();
                 GtkTreeIter iter;
-                data->song->rating = -1;
+                //data->song->rating = -1;
                 /* Update the view */
                 gtk_tree_path_append_index(path,i);
                 iter.stamp = self->_priv->stamp;
@@ -700,6 +700,7 @@ end:
                         g_value_set_int(value, song->time);
                         break;
                     case MPDDATA_MODEL_COL_SONG_RATING:
+/*
                         if(song->rating < 0) {
                             gchar *str = mpd_sticker_song_get(connection, song->file, "rating");
                             if(str != NULL ) {
@@ -711,6 +712,7 @@ end:
                         g_value_set_int(value,
                                 (song->rating > 10)? 10: ((song->rating < 0)? 0: song->rating)
                                 );
+*/
                         break;
                     case MPDDATA_MODEL_COL_SONG_LENGTH_FORMAT:
                         {
@@ -748,7 +750,7 @@ end:
                         }
                         break;
                     case MPDDATA_MODEL_COL_SONG_PRIORITY:
-                        g_value_set_int(value, song->priority);
+                        //g_value_set_int(value, song->priority);
                         break;
                     default:
                         break;

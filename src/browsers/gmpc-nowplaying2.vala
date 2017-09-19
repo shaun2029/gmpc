@@ -114,7 +114,7 @@ namespace Gmpc
                             Gtk.TreeIter iter;
                             if(model.get_iter(out iter, path))
                             {
-                                model.remove(ref iter);
+                                model.remove(iter);
                             }
                         }
                     }

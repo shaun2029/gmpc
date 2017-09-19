@@ -829,12 +829,12 @@ public class Gmpc.DataView : Gtk.TreeView
                 if(row_type != MPD.Data.Type.SONG) continue;
 
                 if(song_id >= 0) {
-                    MPD.PlayQueue.set_priority(server, song_id, priority--);
+                    //MPD.PlayQueue.set_priority(server, song_id, priority--);
                 } else {
                     string song_path;
                     model.get(iter, Gmpc.MpdData.ColumnTypes.COL_PATH, out song_path);
                     song_id = MPD.PlayQueue.add_song_get_id(server,song_path);
-                    MPD.PlayQueue.set_priority(server, song_id, priority--);
+                    //MPD.PlayQueue.set_priority(server, song_id, priority--);
                 }
             }            
         }
@@ -855,7 +855,7 @@ public class Gmpc.DataView : Gtk.TreeView
                 int song_id;
                 model.get(iter,Gmpc.MpdData.ColumnTypes.COL_SONG_ID, out song_id);
                 if ( song_id >= 0 ) {
-                    MPD.PlayQueue.set_priority(server, song_id, 0);
+                    //MPD.PlayQueue.set_priority(server, song_id, 0);
                 }
             }            
         }
