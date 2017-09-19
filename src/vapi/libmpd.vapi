@@ -203,9 +203,14 @@ namespace MPD {
         [CCode (cname="mpd_playlist_set_priority")]
         public void set_priority(MPD.Server server, int song_id, int priority);
 
-        [CCode (cname="mpd_playlist_add")]
-        public void add_song(MPD.Server server, string path);
-
+        //[CCode (cname="mpd_playlist_add")]
+        public void add_song(MPD.Server server, string path)
+				{
+                    int song_id = add_song_get_id(server, path);
+										Song *song = get_current_song(server);
+										song_move_id(server, song_id, song->pos + 1);
+				}
+	
         [CCode (cname="mpd_playlist_add_get_id")]
         public int add_song_get_id(MPD.Server server, string path);
 
@@ -224,8 +229,10 @@ namespace MPD {
         public void queue_commit(MPD.Server server);
         [CCode (cname="mpd_playlist_clear")]
         public void clear(MPD.Server server);
-		[CCode (cname="mpd_playlist_get_playlist_length")]
-		public int length(MPD.Server server);
+        [CCode (cname="mpd_playlist_get_playlist_length")]
+        public int length(MPD.Server server);
+        [CCode (cname="mpd_playlist_get_current_song")]
+        public Song* get_current_song(MPD.Server server);
 
         public void add_artist(MPD.Server server, string artist)
         {
