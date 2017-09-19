@@ -203,8 +203,10 @@ namespace MPD {
         [CCode (cname="mpd_playlist_set_priority")]
         public void set_priority(MPD.Server server, int song_id, int priority);
 
-        //[CCode (cname="mpd_playlist_add")]
-        public void add_song(MPD.Server server, string path)
+        [CCode (cname="mpd_playlist_add")]
+        public void add_song(MPD.Server server, string path);
+
+        public void add_next_song(MPD.Server server, string path)
 				{
                     int song_id = add_song_get_id(server, path);
 										Song *song = get_current_song(server);

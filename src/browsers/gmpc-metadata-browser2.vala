@@ -453,6 +453,14 @@ public class  Gmpc.Browsers.Metadata : Gmpc.Plugin.Base, Gmpc.Plugin.BrowserIfac
             MPD.PlayQueue.add_song(server,song.file);
         }
     }
+    private void song_add_next_clicked(Gtk.Widget item )
+    {
+        unowned MPD.Song? song = browser_get_selected_song();
+        if(song != null)
+        {
+            MPD.PlayQueue.add_next_song(server,song.file);
+        }
+    }
     private void song_replace_clicked(Gtk.Widget item)
     {
         MPD.PlayQueue.clear(server);
@@ -474,6 +482,11 @@ public class  Gmpc.Browsers.Metadata : Gmpc.Plugin.Base, Gmpc.Plugin.BrowserIfac
 
                 item = new Gtk.ImageMenuItem.from_stock("gtk-media-play",null);
                 item.activate.connect(song_replace_clicked);
+                menu.append(item);
+
+                item = new Gtk.ImageMenuItem.from_stock("gtk-media-play",null);
+                item.set_label("Add after current song");
+                item.activate.connect(song_add_next_clicked);
                 menu.append(item);
 
                 menu.popup(null, null, null, event.button, event.time);
