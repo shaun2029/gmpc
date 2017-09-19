@@ -467,6 +467,11 @@ public class  Gmpc.Browsers.Metadata : Gmpc.Plugin.Base, Gmpc.Plugin.BrowserIfac
         song_add_clicked(item);
         MPD.Player.play(server);
     }
+    private void song_play_next_clicked(Gtk.Widget item)
+    {
+        song_add_next_clicked(item);
+        MPD.Player.next(server);
+    }
     /* Handle right mouse click */
     private bool song_browser_button_release_event(Gtk.Widget ptree, Gdk.EventButton event)
     {
@@ -481,7 +486,7 @@ public class  Gmpc.Browsers.Metadata : Gmpc.Plugin.Base, Gmpc.Plugin.BrowserIfac
                 menu.append(item);
 
                 item = new Gtk.ImageMenuItem.from_stock("gtk-media-play",null);
-                item.activate.connect(song_replace_clicked);
+                item.activate.connect(song_play_next_clicked);
                 menu.append(item);
 
                 item = new Gtk.ImageMenuItem.from_stock("gtk-media-play",null);
